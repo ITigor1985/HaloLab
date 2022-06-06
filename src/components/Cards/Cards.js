@@ -1,6 +1,7 @@
 import { getCards } from 'api/api';
 import { useState, useEffect } from 'react';
 import Card from '../Card';
+import { CardsList, Container } from './Cards.styled';
 
 const Cards = () => {
   let [cards, setCards] = useState([]);
@@ -22,11 +23,13 @@ const Cards = () => {
   }, []);
 
   return (
-    <ul>
-      {cards.map(item => {
-        return <Card item={item} key={item.name} />;
-      })}
-    </ul>
+    <Container>
+      <CardsList>
+        {cards.map(item => {
+          return <Card item={item} key={item.name} />;
+        })}
+      </CardsList>
+    </Container>
   );
 };
 
