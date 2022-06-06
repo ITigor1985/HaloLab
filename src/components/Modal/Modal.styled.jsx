@@ -1,4 +1,6 @@
-.overlay {
+import styled from 'styled-components';
+
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -9,11 +11,15 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-}
+`;
 
-.modal {
+export const ModalWindow = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 384px;
   height: 536px;
   background-color: #fff;
   border-radius: 24px;
-}
+  padding: 54px 48px 66px;
+`;

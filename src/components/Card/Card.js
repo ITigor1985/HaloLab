@@ -22,7 +22,7 @@ const Card = props => {
         </Price>
         <BtnBuy
           type="button"
-          onClick={event => modalOpen(name, price, category, event)}
+          onClick={event => modalOpen(name, category, price, event)}
         />
       </Container>
     </CardContainer>
