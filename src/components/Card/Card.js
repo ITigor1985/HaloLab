@@ -10,7 +10,7 @@ import {
 
 const Card = props => {
   const { name, price, category } = props.item;
-
+  const { modalOpen } = props;
   return (
     <CardContainer>
       <Category>{category}</Category>
@@ -20,7 +20,10 @@ const Card = props => {
           <Currensy>&#36;</Currensy>
           {price}
         </Price>
-        <BtnBuy />
+        <BtnBuy
+          type="button"
+          onClick={event => modalOpen(name, price, category, event)}
+        />
       </Container>
     </CardContainer>
   );

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Card from '../Card';
 import { CardsList, Container } from './Cards.styled';
 
-const Cards = () => {
+const Cards = ({ modalOpen }) => {
   let [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Cards = () => {
       {cards.length > 0 && (
         <CardsList>
           {cards.map(item => {
-            return <Card item={item} key={item.name} />;
+            return <Card item={item} key={item.name} modalOpen={modalOpen} />;
           })}
         </CardsList>
       )}
