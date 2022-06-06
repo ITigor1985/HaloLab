@@ -24,11 +24,13 @@ const Cards = () => {
 
   return (
     <Container>
-      <CardsList>
-        {cards.map(item => {
-          return <Card item={item} key={item.name} />;
-        })}
-      </CardsList>
+      {cards.length > 0 && (
+        <CardsList>
+          {cards.map(item => {
+            return <Card item={item} key={item.name} />;
+          })}
+        </CardsList>
+      )}
     </Container>
   );
 };
