@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 export const Container = styled.div`
-  width: 1136px;
+  width: 390px;
   margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1136px) {
+    width: 1136px;
+  }
 `;
 
 export const CardsList = styled.ul`
