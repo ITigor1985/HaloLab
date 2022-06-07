@@ -78,7 +78,7 @@ const Form = () => {
         onChange={e => phone.onChange(e)}
         onBlur={e => phone.onBlur(e)}
         value={phone.value}
-        phone="phone"
+        name="phone"
         type="tel"
         placeholder="Phone"
       />

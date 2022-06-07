@@ -1,7 +1,7 @@
 import { getCards } from 'api/api';
 import { useState, useEffect } from 'react';
 import Card from '../Card';
-import { CardsList, Container } from './Cards.styled';
+import { BtnCheap, CardsList, Container } from './Cards.styled';
 
 const Cards = ({ modalOpen }) => {
   let [cards, setCards] = useState([]);
@@ -22,6 +22,15 @@ const Cards = ({ modalOpen }) => {
     getCardsItem();
   }, []);
 
+  const getMinPrice = e => {
+    const minCost = cards.reduce(
+      (min, p) => (p.price < min ? p.price : min),
+      cards[0].price
+    );
+    const minPrice = cards.filter(card => card.price === minCost);
+    minPrice.map(card => modalOpen(card.category, card.name, card.price, e));
+  };
+
   return (
     <Container>
       {cards.length > 0 && (
@@ -31,6 +40,9 @@ const Cards = ({ modalOpen }) => {
           })}
         </CardsList>
       )}
+      <BtnCheap type="button" onClick={e => getMinPrice(e)}>
+        Buy cheapest
+      </BtnCheap>
     </Container>
   );
 };
