@@ -34,15 +34,17 @@ const Cards = ({ modalOpen }) => {
   return (
     <Container>
       {cards.length > 0 && (
-        <CardsList>
-          {cards.map(item => {
-            return <Card item={item} key={item.name} modalOpen={modalOpen} />;
-          })}
-        </CardsList>
+        <>
+          <CardsList>
+            {cards.map(item => {
+              return <Card item={item} key={item.name} modalOpen={modalOpen} />;
+            })}
+          </CardsList>
+          <BtnCheap type="button" onClick={e => getMinPrice(e)}>
+            Buy cheapest
+          </BtnCheap>
+        </>
       )}
-      <BtnCheap type="button" onClick={e => getMinPrice(e)}>
-        Buy cheapest
-      </BtnCheap>
     </Container>
   );
 };
