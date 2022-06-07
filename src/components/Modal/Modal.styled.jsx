@@ -20,7 +20,6 @@ export const ModalWindow = styled.div`
   flex-direction: column;
   align-items: center;
   width: 384px;
-  height: 536px;
   background-color: #fff;
   border-radius: 24px;
   padding: 54px 48px 66px;

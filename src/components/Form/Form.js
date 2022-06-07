@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { BtnSubmit, FormContact, InputName, InputNumber } from './Form.styled';
 
 const useValidation = (value, validations) => {
   const [isEmpty, setEmpty] = useState(true);
@@ -57,33 +58,44 @@ const Form = () => {
   const name = useInpute('', { isEmpty: true, minLength: 3 });
   const phone = useInpute('', { isEmpty: true, length: 12 });
 
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const name = form.elements.name.value;
+    const phone = form.elements.phone.value;
+    console.log(name, phone);
+    form.reset();
+  };
+
   return (
-    <form>
-      {name.isDirty && name.isEmpty && <div>is empty</div>}
+    <FormContact onSubmit={handleSubmit}>
+      {name.isDirty && name.isEmpty && <div>This field in required</div>}
       {name.isDirty && name.minLengthError && <div>is empty</div>}
 
-      <input
+      <InputName
         onChange={e => name.onChange(e)}
         onBlur={e => name.onBlur(e)}
         value={name.value}
         name="name"
         type="text"
         placeholder="Name"
+        required
       />
       {phone.isDirty && phone.isEmpty && <div>This field in required</div>}
       {phone.isDirty && phone.lengthError && (
         <div>Should contain 12 characters</div>
       )}
-      <input
+      <InputNumber
         onChange={e => phone.onChange(e)}
         onBlur={e => phone.onBlur(e)}
         value={phone.value}
         name="phone"
         type="tel"
         placeholder="Phone"
+        required
       />
-      <button type="Submit">Submit</button>
-    </form>
+      <BtnSubmit type="submit">Submit</BtnSubmit>
+    </FormContact>
   );
 };
 export default Form;

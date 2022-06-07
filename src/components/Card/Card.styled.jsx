@@ -9,6 +9,9 @@ export const CardContainer = styled.li`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  :hover {
+    box-shadow: 24px 24px 40px rgba(75, 207, 160, 0.08);
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 0px;
