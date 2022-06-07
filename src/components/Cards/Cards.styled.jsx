@@ -3,14 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 390px;
   padding-top: 30px;
+  padding-bottom: 30px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 768px;
     padding-top: 80px;
+    padding-bottom: 80px;
   }
   @media screen and (min-width: 1136px) {
     width: 1136px;
     padding-top: 104px;
+    padding-bottom: 100px;
   }
 `;
 
