@@ -14,7 +14,14 @@ export const App = () => {
     setPrice(modalPrice);
   };
 
-  const modalClose = () => {
+  const modalClose = e => {
+    if (e.currentTarget === e.target) {
+      setName('');
+      setCategory('');
+      setPrice('');
+    }
+  };
+  const modalCloseBtn = e => {
     setName('');
     setCategory('');
     setPrice('');
@@ -29,6 +36,7 @@ export const App = () => {
           modalCategory={modalCategory}
           modalPrice={modalPrice}
           onClick={modalClose}
+          modalCloseBtn={modalCloseBtn}
         />
       )}
     </>

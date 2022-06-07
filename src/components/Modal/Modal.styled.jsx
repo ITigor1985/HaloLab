@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IoCloseSharp } from 'react-icons/io5';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -14,6 +15,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWindow = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,4 +24,26 @@ export const ModalWindow = styled.div`
   background-color: #fff;
   border-radius: 24px;
   padding: 54px 48px 66px;
+`;
+
+export const BtnCloseModal = styled.button`
+  position: absolute;
+  background: #f2f2f2;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  z-index: 1220;
+  overflow: hidden;
+`;
+export const ImgClose = styled(IoCloseSharp)`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
