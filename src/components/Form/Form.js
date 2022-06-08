@@ -1,5 +1,11 @@
 import { useInpute } from './customHooks/customHooks';
-import { BtnSubmit, FormContact, InputName, InputNumber } from './Form.styled';
+import {
+  BtnSubmit,
+  FormContact,
+  InputError,
+  InputName,
+  InputNumber,
+} from './Form.styled';
 
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
@@ -25,8 +31,12 @@ const Form = () => {
     <FormContact
       onSubmit={e => handleSubmit(name.inputValid, phone.inputValid, e)}
     >
-      {name.isDirty && name.onlyLetter && <div>Only letters allowed</div>}
-      {name.isDirty && name.isEmpty && <div>This field in required</div>}
+      {name.isDirty && name.onlyLetter && (
+        <InputError>Only letters allowed</InputError>
+      )}
+      {name.isDirty && name.isEmpty && (
+        <InputError>This field in required</InputError>
+      )}
 
       <InputName
         onChange={e => name.onChange(e)}
@@ -38,11 +48,15 @@ const Form = () => {
         borderColor={name.styleOption}
       />
 
-      {phone.isDirty && phone.isEmpty && <div>This field in required</div>}
-      {phone.isDirty && phone.lengthError && (
-        <div>Should contain 12 characters</div>
+      {phone.isDirty && phone.isEmpty && (
+        <InputError>This field in required</InputError>
       )}
-      {phone.isDirty && phone.onlyNumber && <div>Only numbers allowed</div>}
+      {phone.isDirty && phone.lengthError && (
+        <InputError>Should contain 12 characters</InputError>
+      )}
+      {phone.isDirty && phone.onlyNumber && (
+        <InputError>Only numbers allowed</InputError>
+      )}
 
       <InputNumber
         onChange={e => phone.onChange(e)}

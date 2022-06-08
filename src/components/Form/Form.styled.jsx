@@ -8,7 +8,6 @@ export const FormContact = styled.form`
 `;
 
 const setBorderColor = props => {
-  console.log(props);
   switch (props.borderColor) {
     case 'green':
       return '1px solid green';

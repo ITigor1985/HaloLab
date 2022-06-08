@@ -42,7 +42,7 @@ export const useValidation = (value, validations) => {
       setInputeValid(true);
       setStyleOption('green');
     }
-  }, [isEmpty, lengthError, onlyLetter, onlyNumber, styleOption]);
+  }, [isEmpty, lengthError, onlyLetter, onlyNumber]);
 
   return {
     isEmpty,
