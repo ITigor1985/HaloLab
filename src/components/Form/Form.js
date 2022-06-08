@@ -6,17 +6,11 @@ const useValidation = (value, validations) => {
   const [onlyNumber, setOnlyNumber] = useState(true);
   const [onlyLetter, setOnlyLetter] = useState(true);
   const [isEmpty, setEmpty] = useState(true);
-  const [minLengthError, setMinLengthError] = useState(false);
-  const [lengthError, setLengthError] = useState(false);
+  const [lengthError, setLengthError] = useState(true);
 
   useEffect(() => {
     for (const validation in validations) {
       switch (validation) {
-        case 'minLength':
-          value.length < validations[validation]
-            ? setMinLengthError(true)
-            : setMinLengthError(false);
-          break;
         case 'isEmpty':
           value ? setEmpty(false) : setEmpty(true);
           break;
@@ -24,6 +18,7 @@ const useValidation = (value, validations) => {
           value.length !== validations[validation]
             ? setLengthError(true)
             : setLengthError(false);
+
           break;
         case 'onlyLetter':
           /^[a-zA-Zа-яёА-ЯЁ]+$/u.test(value)
@@ -39,7 +34,7 @@ const useValidation = (value, validations) => {
     }
   }, [validations, value]);
 
-  return { isEmpty, minLengthError, lengthError, onlyLetter, onlyNumber };
+  return { isEmpty, lengthError, onlyLetter, onlyNumber };
 };
 
 const useInpute = (initialValue, validations) => {
@@ -66,7 +61,12 @@ const useInpute = (initialValue, validations) => {
 
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
-  const phone = useInpute('', { isEmpty: true, length: 12, onlyNumber: true });
+  const phone = useInpute('', {
+    isEmpty: true,
+    length: 12,
+    onlyNumber: true,
+  });
+  console.log(phone);
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -74,7 +74,6 @@ const Form = () => {
     const name = form.elements.name.value;
     const phone = form.elements.phone.value;
     console.log(name, phone);
-    form.reset();
   };
 
   return (
@@ -96,6 +95,7 @@ const Form = () => {
         <div>Should contain 12 characters</div>
       )}
       {phone.isDirty && phone.onlyNumber && <div>Only numbers allowed</div>}
+
       <InputNumber
         onChange={e => phone.onChange(e)}
         onBlur={e => phone.onBlur(e)}
