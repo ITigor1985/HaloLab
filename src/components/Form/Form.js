@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BtnSubmit, FormContact, InputName, InputNumber } from './Form.styled';
 
 const useValidation = (value, validations) => {
+  const [onlyNumber, setOnlyNumber] = useState(true);
   const [onlyLetter, setOnlyLetter] = useState(true);
   const [isEmpty, setEmpty] = useState(true);
   const [minLengthError, setMinLengthError] = useState(false);
@@ -25,13 +26,20 @@ const useValidation = (value, validations) => {
             : setLengthError(false);
           break;
         case 'onlyLetter':
+          /^[a-zA-Zа-яёА-ЯЁ]+$/u.test(value)
+            ? setOnlyLetter(false)
+            : setOnlyLetter(true);
+          break;
+        case 'onlyNumber':
+          /^[0-9]+$/u.test(value) ? setOnlyNumber(false) : setOnlyNumber(true);
+          break;
         default:
           return;
       }
     }
   }, [validations, value]);
 
-  return { isEmpty, minLengthError, lengthError };
+  return { isEmpty, minLengthError, lengthError, onlyLetter, onlyNumber };
 };
 
 const useInpute = (initialValue, validations) => {
@@ -57,8 +65,8 @@ const useInpute = (initialValue, validations) => {
 };
 
 const Form = () => {
-  const name = useInpute('', { isEmpty: true, onlyLetter: '' });
-  const phone = useInpute('', { isEmpty: true, length: 12 });
+  const name = useInpute('', { isEmpty: true, onlyLetter: true });
+  const phone = useInpute('', { isEmpty: true, length: 12, onlyNumber: true });
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -71,9 +79,8 @@ const Form = () => {
 
   return (
     <FormContact onSubmit={handleSubmit}>
+      {name.isDirty && name.onlyLetter && <div>Only letters allowed</div>}
       {name.isDirty && name.isEmpty && <div>This field in required</div>}
-      {name.isDirty && name.minLengthError && <div>is empty</div>}
-
       <InputName
         onChange={e => name.onChange(e)}
         onBlur={e => name.onBlur(e)}
@@ -83,10 +90,12 @@ const Form = () => {
         placeholder="Name"
         required
       />
+
       {phone.isDirty && phone.isEmpty && <div>This field in required</div>}
       {phone.isDirty && phone.lengthError && (
         <div>Should contain 12 characters</div>
       )}
+      {phone.isDirty && phone.onlyNumber && <div>Only numbers allowed</div>}
       <InputNumber
         onChange={e => phone.onChange(e)}
         onBlur={e => phone.onBlur(e)}
@@ -96,6 +105,7 @@ const Form = () => {
         placeholder="Phone"
         required
       />
+
       <BtnSubmit type="submit">Submit</BtnSubmit>
     </FormContact>
   );
