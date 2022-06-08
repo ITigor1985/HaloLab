@@ -7,10 +7,23 @@ export const FormContact = styled.form`
   flex-direction: column;
 `;
 
+const setBorderColor = props => {
+  console.log(props);
+  switch (props.borderColor) {
+    case 'green':
+      return '1px solid green';
+    case 'red':
+      return '1px solid red';
+    default:
+      return '1px solid rgba(0, 0, 0, 0.2)';
+  }
+};
+
 export const InputName = styled.input`
+  border: ${setBorderColor};
+  outline: none;
   height: 56px;
   margin-bottom: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding-left: 16px;
   font-weight: 400;
@@ -35,9 +48,10 @@ export const InputName = styled.input`
 `;
 
 export const InputNumber = styled.input`
+  border: ${setBorderColor};
+  outline: none;
   height: 56px;
   margin-bottom: 32px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding-left: 16px;
   font-weight: 400;
@@ -76,4 +90,11 @@ export const BtnSubmit = styled.button`
   :hover {
     background: #50daa8;
   }
+`;
+export const InputError = styled.div`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  color: #e43f3f;
 `;

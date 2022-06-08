@@ -10,7 +10,6 @@ const Cards = ({ modalOpen }) => {
     const getCardsItem = async () => {
       try {
         const data = await getCards();
-        console.log(data);
         const cards = data.map(({ name, category, price }) => {
           return { name, category, price };
         });
