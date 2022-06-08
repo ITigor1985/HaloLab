@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/HaloLab/static/css/main.7d40bf6a.css",
-    "main.js": "/HaloLab/static/js/main.2e66d602.js",
+    "main.js": "/HaloLab/static/js/main.dbcbcf17.js",
     "static/js/787.50072cc6.chunk.js": "/HaloLab/static/js/787.50072cc6.chunk.js",
     "index.html": "/HaloLab/index.html",
     "main.7d40bf6a.css.map": "/HaloLab/static/css/main.7d40bf6a.css.map",
-    "main.2e66d602.js.map": "/HaloLab/static/js/main.2e66d602.js.map",
+    "main.dbcbcf17.js.map": "/HaloLab/static/js/main.dbcbcf17.js.map",
     "787.50072cc6.chunk.js.map": "/HaloLab/static/js/787.50072cc6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d40bf6a.css",
-    "static/js/main.2e66d602.js"
+    "static/js/main.dbcbcf17.js"
   ]
 }
