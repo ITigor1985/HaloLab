@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BtnSubmit, FormContact, InputName, InputNumber } from './Form.styled';
 
 const useValidation = (value, validations) => {
+  const [onlyLetter, setOnlyLetter] = useState(true);
   const [isEmpty, setEmpty] = useState(true);
   const [minLengthError, setMinLengthError] = useState(false);
   const [lengthError, setLengthError] = useState(false);
@@ -23,6 +24,7 @@ const useValidation = (value, validations) => {
             ? setLengthError(true)
             : setLengthError(false);
           break;
+        case 'onlyLetter':
         default:
           return;
       }
@@ -55,7 +57,7 @@ const useInpute = (initialValue, validations) => {
 };
 
 const Form = () => {
-  const name = useInpute('', { isEmpty: true, minLength: 3 });
+  const name = useInpute('', { isEmpty: true, onlyLetter: '' });
   const phone = useInpute('', { isEmpty: true, length: 12 });
 
   const handleSubmit = evt => {
