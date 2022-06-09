@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import errorImage from '../../images/error.svg';
+import arrow from '../../images/arrow-right.svg';
 
 export const FormContact = styled.form`
   display: flex;
@@ -107,6 +108,7 @@ export const InputNumber = styled.input`
 `;
 
 export const BtnSubmit = styled.button`
+  position: relative;
   padding: 16px 103px;
   background: #4bcfa0;
   border-radius: 16px;
@@ -120,6 +122,18 @@ export const BtnSubmit = styled.button`
   margin-top: 16px;
   :hover {
     background: #50daa8;
+  }
+  :hover::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 185px;
+    transform: translateY(-50%);
+    background-image: url(${arrow});
+    background-size: contain;
+    height: 20px;
+    width: 20px;
   }
 `;
 export const InputError = styled.div`
