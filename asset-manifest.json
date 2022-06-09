@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/HaloLab/static/css/main.7d40bf6a.css",
-    "main.js": "/HaloLab/static/js/main.f7de507d.js",
+    "main.css": "/HaloLab/static/css/main.bd30b334.css",
+    "main.js": "/HaloLab/static/js/main.2e702077.js",
     "static/js/787.50072cc6.chunk.js": "/HaloLab/static/js/787.50072cc6.chunk.js",
     "index.html": "/HaloLab/index.html",
     "static/media/error.svg": "/HaloLab/static/media/error.17a9a679b92b5d58500e17e87181b347.svg",
-    "main.7d40bf6a.css.map": "/HaloLab/static/css/main.7d40bf6a.css.map",
-    "main.f7de507d.js.map": "/HaloLab/static/js/main.f7de507d.js.map",
+    "main.bd30b334.css.map": "/HaloLab/static/css/main.bd30b334.css.map",
+    "main.2e702077.js.map": "/HaloLab/static/js/main.2e702077.js.map",
     "787.50072cc6.chunk.js.map": "/HaloLab/static/js/787.50072cc6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d40bf6a.css",
-    "static/js/main.f7de507d.js"
+    "static/css/main.bd30b334.css",
+    "static/js/main.2e702077.js"
   ]
 }
