@@ -1,4 +1,6 @@
 import { postContact } from 'api/api';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useInpute } from './customHooks/customHooks';
 import {
   BtnSubmit,
@@ -11,6 +13,10 @@ import {
 
 let item = {};
 
+const positionToast = () => {
+  return { position: toast.POSITION.TOP_CENTER };
+};
+
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
   const phone = useInpute('', {
@@ -22,6 +28,10 @@ const Form = () => {
   const handleSubmit = (nameValidError, phoneValidError, evt) => {
     evt.preventDefault();
     if (!nameValidError || !phoneValidError) {
+      toast.warn(
+        'Not all fields are filled or filled out incorrectly',
+        positionToast()
+      );
       return;
     }
     const form = evt.currentTarget;
@@ -30,6 +40,7 @@ const Form = () => {
     item = { name, phone };
     postContact(item);
     console.log(item);
+    toast.success('Contacts add!', positionToast());
   };
 
   return (
@@ -81,6 +92,7 @@ const Form = () => {
         />
       </InputContainer>
       <BtnSubmit type="submit">Submit</BtnSubmit>
+      <ToastContainer />
     </FormContact>
   );
 };
