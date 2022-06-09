@@ -33,10 +33,6 @@ const Form = () => {
     console.log(name, phone);
   };
 
-  const changeBorderInpute = async changeColor => {
-    return (await changeColor) ? 'green' : 'red';
-  };
-
   return (
     <FormContact
       onSubmit={e => handleSubmit(name.inputValid, phone.inputValid, e)}
