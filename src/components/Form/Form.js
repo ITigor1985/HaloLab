@@ -12,6 +12,7 @@ let item = {};
 
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
+  console.log(name);
   const phone = useInpute('', {
     isEmpty: true,
     length: 12,
@@ -32,6 +33,10 @@ const Form = () => {
     console.log(name, phone);
   };
 
+  const changeBorderInpute = async changeColor => {
+    return (await changeColor) ? 'green' : 'red';
+  };
+
   return (
     <FormContact
       onSubmit={e => handleSubmit(name.inputValid, phone.inputValid, e)}
@@ -50,7 +55,7 @@ const Form = () => {
         name="name"
         type="text"
         placeholder="Name"
-        borderColor={name.styleOption}
+        borderColor={name.isDirty && (name.inputValid ? 'green' : 'red')}
       />
 
       {phone.isDirty && phone.isEmpty && (
@@ -70,7 +75,7 @@ const Form = () => {
         name="phone"
         type="tel"
         placeholder="Phone"
-        borderColor={phone.styleOption}
+        borderColor={phone.isDirty && (phone.inputValid ? 'green' : 'red')}
       />
 
       <BtnSubmit type="submit">Submit</BtnSubmit>
