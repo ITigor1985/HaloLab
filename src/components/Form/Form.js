@@ -1,3 +1,4 @@
+import { postContact } from 'api/api';
 import { useInpute } from './customHooks/customHooks';
 import {
   BtnSubmit,
@@ -6,6 +7,8 @@ import {
   InputName,
   InputNumber,
 } from './Form.styled';
+
+let item = {};
 
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
@@ -24,6 +27,8 @@ const Form = () => {
     const form = evt.currentTarget;
     const name = form.elements.name.value;
     const phone = form.elements.phone.value;
+    item = { name, phone };
+    postContact(item);
     console.log(name, phone);
   };
 

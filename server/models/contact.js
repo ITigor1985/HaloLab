@@ -8,7 +8,7 @@ const contactSchema = Schema(
     },
 
     phone: {
-      type: String,
+      type: Number,
     },
   },
   { versionKey: false, timestamps: true }
