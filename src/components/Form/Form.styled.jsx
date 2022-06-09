@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import errorImage from '../../images/error.svg';
 
 export const FormContact = styled.form`
   display: flex;
@@ -18,17 +19,47 @@ const setBorderColor = props => {
   }
 };
 
+const displayVisible = props => {
+  switch (props.borderColor) {
+    case 'green':
+      return 'none';
+    case 'red':
+      return 'block';
+    default:
+      return 'none';
+  }
+};
+
+export const InputContainer = styled.div`
+  position: relative;
+  margin-bottom: 16px;
+  &::after {
+    content: '';
+    display: ${displayVisible};
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: 11px;
+    background-image: url(${errorImage});
+    background-size: contain;
+    height: 24px;
+    width: 24px;
+  }
+`;
+
 export const InputName = styled.input`
+  position: relative;
   border: ${setBorderColor};
   outline: none;
   height: 56px;
-  margin-bottom: 16px;
   border-radius: 16px;
   padding-left: 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.02em;
+  width: 100%;
   ::placeholder,
   ::-webkit-input-placeholder {
     font-weight: 400;
@@ -50,13 +81,13 @@ export const InputNumber = styled.input`
   border: ${setBorderColor};
   outline: none;
   height: 56px;
-  margin-bottom: 32px;
   border-radius: 16px;
   padding-left: 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.02em;
+  width: 100%;
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -86,6 +117,7 @@ export const BtnSubmit = styled.button`
   text-transform: uppercase;
   color: #ffffff;
   border: none;
+  margin-top: 16px;
   :hover {
     background: #50daa8;
   }

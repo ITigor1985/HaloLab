@@ -3,6 +3,7 @@ import { useInpute } from './customHooks/customHooks';
 import {
   BtnSubmit,
   FormContact,
+  InputContainer,
   InputError,
   InputName,
   InputNumber,
@@ -12,7 +13,6 @@ let item = {};
 
 const Form = () => {
   const name = useInpute('', { isEmpty: true, onlyLetter: true });
-  console.log(name);
   const phone = useInpute('', {
     isEmpty: true,
     length: 12,
@@ -21,7 +21,6 @@ const Form = () => {
 
   const handleSubmit = (nameValidError, phoneValidError, evt) => {
     evt.preventDefault();
-
     if (!nameValidError || !phoneValidError) {
       return;
     }
@@ -30,7 +29,7 @@ const Form = () => {
     const phone = form.elements.phone.value;
     item = { name, phone };
     postContact(item);
-    console.log(name, phone);
+    console.log(item);
   };
 
   return (
@@ -44,15 +43,19 @@ const Form = () => {
         <InputError>This field in required</InputError>
       )}
 
-      <InputName
-        onChange={e => name.onChange(e)}
-        onBlur={e => name.onBlur(e)}
-        value={name.value}
-        name="name"
-        type="text"
-        placeholder="Name"
+      <InputContainer
         borderColor={name.isDirty && (name.inputValid ? 'green' : 'red')}
-      />
+      >
+        <InputName
+          onChange={e => name.onChange(e)}
+          onBlur={e => name.onBlur(e)}
+          value={name.value}
+          name="name"
+          type="text"
+          placeholder="Name"
+          borderColor={name.isDirty && (name.inputValid ? 'green' : 'red')}
+        />
+      </InputContainer>
 
       {phone.isDirty && phone.isEmpty && (
         <InputError>This field in required</InputError>
@@ -64,16 +67,19 @@ const Form = () => {
         <InputError>Only numbers allowed</InputError>
       )}
 
-      <InputNumber
-        onChange={e => phone.onChange(e)}
-        onBlur={e => phone.onBlur(e)}
-        value={phone.value}
-        name="phone"
-        type="tel"
-        placeholder="Phone"
+      <InputContainer
         borderColor={phone.isDirty && (phone.inputValid ? 'green' : 'red')}
-      />
-
+      >
+        <InputNumber
+          onChange={e => phone.onChange(e)}
+          onBlur={e => phone.onBlur(e)}
+          value={phone.value}
+          name="phone"
+          type="tel"
+          placeholder="Phone"
+          borderColor={phone.isDirty && (phone.inputValid ? 'green' : 'red')}
+        />
+      </InputContainer>
       <BtnSubmit type="submit">Submit</BtnSubmit>
     </FormContact>
   );
