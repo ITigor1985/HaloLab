@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/HaloLab/static/css/main.bd30b334.css",
-    "main.js": "/HaloLab/static/js/main.c194666d.js",
+    "main.js": "/HaloLab/static/js/main.c61a0d32.js",
     "static/js/787.50072cc6.chunk.js": "/HaloLab/static/js/787.50072cc6.chunk.js",
     "index.html": "/HaloLab/index.html",
     "static/media/error.svg": "/HaloLab/static/media/error.17a9a679b92b5d58500e17e87181b347.svg",
     "static/media/arrow-right.svg": "/HaloLab/static/media/arrow-right.2859eaf0aa9cbb0001d978b43ea1463e.svg",
     "main.bd30b334.css.map": "/HaloLab/static/css/main.bd30b334.css.map",
-    "main.c194666d.js.map": "/HaloLab/static/js/main.c194666d.js.map",
+    "main.c61a0d32.js.map": "/HaloLab/static/js/main.c61a0d32.js.map",
     "787.50072cc6.chunk.js.map": "/HaloLab/static/js/787.50072cc6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd30b334.css",
-    "static/js/main.c194666d.js"
+    "static/js/main.c61a0d32.js"
   ]
 }
