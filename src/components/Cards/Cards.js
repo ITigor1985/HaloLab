@@ -5,6 +5,7 @@ import { BtnCheap, CardsList, Container } from './Cards.styled';
 
 const Cards = ({ modalOpen }) => {
   let [cards, setCards] = useState([]);
+  let [cheapest, setCheapest] = useState([]);
 
   useEffect(() => {
     const getCardsItem = async () => {
@@ -22,12 +23,17 @@ const Cards = ({ modalOpen }) => {
   }, []);
 
   const getMinPrice = e => {
-    const minCost = cards.reduce(
-      (min, p) => (p.price < min ? p.price : min),
-      cards[0].price
-    );
-    const minPrice = cards.filter(card => card.price === minCost);
-    minPrice.map(card => modalOpen(card.category, card.name, card.price, e));
+    if (cheapest.length !== 0) {
+      cheapest.map(card => modalOpen(card.category, card.name, card.price, e));
+    } else {
+      const minCost = cards.reduce(
+        (min, p) => (p.price < min ? p.price : min),
+        cards[0].price
+      );
+      const minPrice = cards.filter(card => card.price === minCost);
+      setCheapest(minPrice);
+      minPrice.map(card => modalOpen(card.category, card.name, card.price, e));
+    }
   };
 
   return (
