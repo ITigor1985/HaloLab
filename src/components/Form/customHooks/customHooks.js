@@ -60,6 +60,7 @@ export const useInpute = (initialValue, validations) => {
   };
 
   const onBlur = e => {
+    console.log(e.target.name);
     setDirty(true);
   };
 

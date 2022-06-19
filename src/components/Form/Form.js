@@ -34,6 +34,7 @@ const Form = () => {
       );
       return;
     }
+
     const form = evt.currentTarget;
     const name = form.elements.name.value;
     const phone = form.elements.phone.value;
